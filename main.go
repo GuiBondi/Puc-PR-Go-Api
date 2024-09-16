@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 )
@@ -45,25 +46,15 @@ func getBookByIDHandler(w http.ResponseWriter, r *http.Request) {
 	// If no book is found
 	http.Error(w, "Book not found", http.StatusNotFound)
 }
+func main() {
+	// Route to get all books
+	http.HandleFunc("/books", getBooksHandler)
 
-// type Response struct {
-// 	Message string `json: "message"`
-// }
+	// Route to get a book by ID (e.g., /books/1)
+	http.HandleFunc("/books/", getBookByIDHandler)
 
-
-// func  greetings(w http.ResponseWriter, r *http.Request) {
-// 	response := Response{Message: "Greetings!!"}
-
-// 	w.Header().Set("Content-Type", "application/json")
-
-// 	json.NewEncoder(w).Encode(response)
-// }
-
-
-// func main(){
-// 	http.HandleFunc("/hello", greetings)
-
-// 	log.Println("Iniciando server na porta :8080")
-// 	log.Fatal(http.ListenAndServe(":8080", nil))
-// }
+	// Start the server
+	fmt.Println("Server running on http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
+}
 
