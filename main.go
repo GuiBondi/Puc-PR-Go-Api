@@ -18,6 +18,10 @@ var books = []Book{
 	{ID: 3, Title: "1984", Author: "George Orwell", Year: 1949},
 }
 
+func getBooksHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(books)
+}
 // type Response struct {
 // 	Message string `json: "message"`
 // }
