@@ -19,7 +19,6 @@ var books = []Book{
 	{ID: 3, Title: "1984", Author: "George Orwell", Year: 1949},
 }
 
-
 func getBooksHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(books)
@@ -27,7 +26,7 @@ func getBooksHandler(w http.ResponseWriter, r *http.Request) {
 
 func getBookByIDHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-
+//commit
 
 	idStr := r.URL.Path[len("/livros/"):]
 	id, err := strconv.Atoi(idStr)
