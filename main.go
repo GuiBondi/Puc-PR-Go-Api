@@ -12,6 +12,11 @@ type Book struct {
 	Author string `json:"author"`
 	Year   int    `json:"year"`
 }
+var books = []Book{
+	{ID: 1, Title: "The Catcher in the Rye", Author: "J.D. Salinger", Year: 1951},
+	{ID: 2, Title: "To Kill a Mockingbird", Author: "Harper Lee", Year: 1960},
+	{ID: 3, Title: "1984", Author: "George Orwell", Year: 1949},
+}
 
 // type Response struct {
 // 	Message string `json: "message"`
