@@ -26,8 +26,6 @@ func getBooksHandler(w http.ResponseWriter, r *http.Request) {
 
 func getBookByIDHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-//commit
-
 	idStr := r.URL.Path[len("/livros/"):]
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
