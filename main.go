@@ -29,7 +29,7 @@ func getBookByIDHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 
-	idStr := r.URL.Path[len("/books/"):]
+	idStr := r.URL.Path[len("/livros/"):]
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
 		http.Error(w, "Id do livro invalido", http.StatusBadRequest)
