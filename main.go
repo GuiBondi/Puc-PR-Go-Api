@@ -1,9 +1,9 @@
 package main
 
 import (
-    "encoding/json"
-    "log"
-    "net/http"
+	"encoding/json"
+	"net/http"
+	"strconv"
 )
 
 type Book struct {
@@ -22,6 +22,30 @@ func getBooksHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(books)
 }
+
+func getBookByIDHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	// Extract the ID from the URL
+	idStr := r.URL.Path[len("/books/"):]
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		http.Error(w, "Invalid book ID", http.StatusBadRequest)
+		return
+	}
+
+	// Search for the book with the given ID
+	for _, book := range books {
+		if book.ID == id {
+			json.NewEncoder(w).Encode(book)
+			return
+		}
+	}
+
+	// If no book is found
+	http.Error(w, "Book not found", http.StatusNotFound)
+}
+
 // type Response struct {
 // 	Message string `json: "message"`
 // }
