@@ -39,7 +39,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         username: guibondi
-        password: ${{ secret.SENHADOCKER}}  # Ensure this is stored in GitHub Secrets
+        password: Melani2001@  # Ensure this is stored in GitHub Secrets
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
@@ -57,4 +57,4 @@ jobs:
       run: |
         curl -H "Content-Type: application/json" \
         -d '{"content": "Deployment complete for **simpleapi**. The Docker image has been successfully deployed."}' \
-        ${{ secret.URLWEBHOOK }}
+        https://discord.com/api/webhooks/1290285549596446772/YoEnt6U-vKf4__XEiLMbjH3ngcvGBTCo741sjucduFXj8dRIKEZ-qqlFNT0Cu7y9Au-a
